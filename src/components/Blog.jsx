@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
 
 const Blog = () => {
-  const blogPosts = [
+   const blogPosts = [
     {
       id: 1,
       title: "What are the 4 types of tele messaging?",
@@ -96,7 +96,7 @@ const Blog = () => {
                 className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col"
                 whileHover={{ y: -10 }}
                 initial={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)" }}
-                whileHover={{ boxShadow: "0 20px 25px rgba(14, 165, 233, 0.1)" }}
+                // whileHover={{ boxShadow: "0 20px 25px rgba(14, 165, 233, 0.1)" }}
               >
                 {/* Image with overlay */}
                 <div className="relative h-48 overflow-hidden">

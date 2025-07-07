@@ -59,14 +59,13 @@ const HeroPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[2.5rem] font-bold text-white leading-tight">
+              <h1 className="text-3xl text-center md:text-start mt-8 md:mt-1 sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[2.5rem] font-bold text-white leading-tight">
                 The Best  <span className="text-amber-300">Tele Communication</span> solutions in Hyderabad
 
               </h1>
               
-              <div className="h-1 w-16 bg-amber-400 my-6"></div>
-              
-              <p className="text-lg sm:text-xl text-blue-100 mb-6 md:mb-8">
+<div className="h-1 w-16 mx-auto md:mx-0 bg-amber-400 my-6"></div>              
+              <p className="text-lg text-center md:text-start sm:text-xl text-blue-100 mb-6 md:mb-8">
                 Enterprise-grade messaging solutions with 99.9% delivery rates and unmatched reliability
               </p>
             </motion.div>

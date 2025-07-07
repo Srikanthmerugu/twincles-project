@@ -16,7 +16,7 @@ const Home = () => {
             <ParallaxProvider>   
                          <Services />
             </ParallaxProvider>
-            <HeroSection />
+            {/* <HeroSection /> */}
                         <Solutions />
 
             <Testimonials />
