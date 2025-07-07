@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiCheck, FiGlobe, FiShield, FiClock, FiTrendingUp, FiAward, FiLayers, FiUsers, FiMail, FiMessageSquare, FiSend, FiPhone, FiImage, FiTarget, FiArrowRight } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import AboutImg from '../../assets/about.svg';
+import AboutImg from '../assets/about.svg'
 // import VisionImg from '../../assets/vision.svg';
 // import MissionImg from '../../assets/mission.svg';
 
@@ -104,7 +104,7 @@ const AboutPage = () => {
       </motion.div>
 
       {/* Main content */}
-      <div className="container mx-auto px-4 py-20 relative z-10">
+      <div className="container md:mt-15 mt-5 mx-auto px-4 py-20 relative z-10">
         {/* Hero section */}
         <motion.div 
           initial="hidden"
@@ -113,11 +113,11 @@ const AboutPage = () => {
           variants={staggerContainer}
           className="text-center mb-16 md:mb-24"
         >
-          <motion.div variants={fadeIn} className="inline-block mb-4">
+          {/* <motion.div variants={fadeIn} className="inline-block mb-4">
             <div className="px-4 py-1 bg-amber-500/20 rounded-full text-amber-400 text-sm font-medium">
               Since 2020
             </div>
-          </motion.div>
+          </motion.div> */}
           
           <motion.h1 
             variants={fadeIn}
@@ -133,7 +133,7 @@ const AboutPage = () => {
             Twincles CPaaS delivers cutting-edge cloud-based communication solutions for businesses globally
           </motion.p>
           
-          <motion.div variants={fadeIn}>
+          {/* <motion.div variants={fadeIn}>
             <motion.button
               whileHover={{ y: -3, boxShadow: "0 10px 20px rgba(245, 158, 11, 0.3)" }}
               whileTap={{ scale: 0.98 }}
@@ -141,7 +141,7 @@ const AboutPage = () => {
             >
               Explore Our Platform <FiArrowRight />
             </motion.button>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* About Twincles with Image */}
@@ -156,7 +156,7 @@ const AboutPage = () => {
             variants={fadeInLeft}
             className="lg:w-1/2"
           >
-            <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 md:p-10">
+            <div className=" p-8 md:p-10">
               <motion.h2 
                 variants={fadeIn}
                 className="text-2xl md:text-3xl font-bold text-white mb-6"
@@ -183,7 +183,7 @@ const AboutPage = () => {
           >
             <motion.div
               variants={floatingAnimation}
-              className="relative"
+              className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl"
             >
               <img 
                 src={AboutImg} 

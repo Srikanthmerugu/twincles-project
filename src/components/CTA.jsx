@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 const CTA = () => {
   return (
-    <section className="py-16 bg-gradient-to-r from-sky-600 to-sky-800 text-white" id="contact">
+    <section className="py-16 bg-gradient-to-r from-black to-sky-950 text-white" id="contact">
       <div className="container mx-auto px-4 text-center">
         <AnimatedSection delay={0.1}>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business Communication?</h2>

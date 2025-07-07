@@ -1,95 +1,164 @@
-// src/components/Blog.jsx
 import React from 'react';
-import AnimatedSection from '../AnimatedSection';
 import { motion } from 'framer-motion';
+import { FiArrowRight } from 'react-icons/fi';
 
 const Blog = () => {
   const blogPosts = [
     {
       id: 1,
       title: "What are the 4 types of tele messaging?",
-      excerpt: "Learn about different tele messaging types and how they can benefit your business.",
-      category: "messaging",
-      img: 'https://twincles.com/wp-content/uploads/2025/07/Add-a-heading.png'
+      excerpt: "Learn about different tele messaging types and how they can benefit your business communication strategy.",
+      category: "Messaging",
+      img: 'https://twincles.com/wp-content/uploads/2025/07/Add-a-heading.png',
+      date: "July 15, 2023"
     },
     {
       id: 2,
       title: "RCS vs SMS: What's the Difference?",
-      excerpt: "Discover the key differences between RCS and traditional SMS messaging.",
-      category: "technology",
-            img: 'https://twincles.com/wp-content/uploads/2025/07/Add-a-heading.png'
-
+      excerpt: "Discover the key differences between RCS and traditional SMS messaging technologies.",
+      category: "Technology",
+      img: 'https://twincles.com/wp-content/uploads/2024/07/2-Factor-Authentication.jpg',
+      date: "June 28, 2023"
     },
     {
       id: 3,
       title: "5 Tips for WhatsApp Business API Success",
-      excerpt: "Maximize your business potential with these WhatsApp API implementation tips.",
-      category: "business",
-            img: 'https://twincles.com/wp-content/uploads/2025/07/Add-a-heading.png'
-
+      excerpt: "Maximize your business potential with these proven WhatsApp API implementation strategies.",
+      category: "Business",
+      img: 'https://twincles.com/wp-content/uploads/2024/07/WhatsApp-API.webp',
+      date: "June 10, 2023"
     },
   ];
 
-  return (
-    <section className="py-16 bg-sky-50" id="blog">
-      <div className="container mx-auto px-4">
-        <AnimatedSection delay={0.1} className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Latest Insights</h2>
-          <p className="text-lg text-sky-700 max-w-2xl mx-auto">
-            Stay updated with the latest trends in telecommunication
-          </p>
-        </AnimatedSection>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <AnimatedSection key={post.id} delay={0.2 + index * 0.1}>
-              <motion.div 
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
-                whileHover={{ y: -10 }}
-              >
-                                    {/* <img src={post.img} alt={post.title} className="w-full h-full object-cover" /> */}
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
 
-                <div className="h-48 bg-gradient-to-r from-sky-500 to-sky-700 relative overflow-hidden">
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  >
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  return (
+    <section className="py-20 bg-gradient-to-b from-sky-50 to-white" id="blog">
+      <div className="container mx-auto px-4 sm:px-6">
+        {/* Header */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="text-center mb-16"
+        >
+          <motion.div variants={fadeInUp} className="inline-block mb-4">
+            <span className="px-4 py-1 bg-sky-100 text-sky-600 rounded-full text-sm font-medium">
+              Insights & Updates
+            </span>
+          </motion.div>
+          
+          <motion.h2 
+            variants={fadeInUp}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-sky-900 mb-4"
+          >
+            Latest From Our Blog
+          </motion.h2>
+          
+          <motion.p 
+            variants={fadeInUp}
+            className="text-lg text-sky-700 max-w-2xl mx-auto"
+          >
+            Stay updated with the latest trends and innovations in telecommunication
+          </motion.p>
+        </motion.div>
+        
+        {/* Blog Posts */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {blogPosts.map((post) => (
+            <motion.div 
+              key={post.id}
+              variants={fadeInUp}
+              className="group"
+            >
+              <motion.div 
+                className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 h-full flex flex-col"
+                whileHover={{ y: -10 }}
+                initial={{ boxShadow: "0 4px 6px rgba(0, 0, 0, 0.05)" }}
+                whileHover={{ boxShadow: "0 20px 25px rgba(14, 165, 233, 0.1)" }}
+              >
+                {/* Image with overlay */}
+                <div className="relative h-48 overflow-hidden">
+                  <motion.img 
+                    src={post.img} 
+                    alt={post.title}
+                    className="w-full h-full object-cover"
+                    initial={{ scale: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-sky-900/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-4 left-4">
-                      <span className="text-xs font-semibold text-white uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-white bg-sky-500 px-3 py-1 rounded-full">
                         {post.category}
                       </span>
                     </div>
-                  </motion.div>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold my-3">{post.title}</h3>
-                  <p className="text-sky-700 mb-4">{post.excerpt}</p>
+                
+                {/* Content */}
+                <div className="p-6 flex-grow flex flex-col">
+                  <div className="mb-2 text-sm text-sky-500">{post.date}</div>
+                  <h3 className="text-xl font-bold text-sky-900 mb-3 group-hover:text-sky-600 transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-sky-700 mb-4 flex-grow">{post.excerpt}</p>
+                  
                   <motion.a 
                     href="#" 
-                    className="text-sky-600 font-semibold hover:text-sky-800 flex items-center"
+                    className="inline-flex items-center text-sky-600 font-semibold hover:text-sky-800 mt-auto"
                     whileHover={{ x: 5 }}
                   >
                     Read more
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
+                    <FiArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
                   </motion.a>
                 </div>
               </motion.div>
-            </AnimatedSection>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         
-        <AnimatedSection delay={0.4} className="text-center mt-12">
+        {/* CTA Button */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-center mt-16"
+        >
           <motion.button 
-            className="bg-sky-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-sky-700 transition"
+            className="relative px-8 py-3 bg-sky-600 text-white rounded-full font-semibold overflow-hidden group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View All Posts
+            <span className="relative z-10 flex items-center gap-2">
+              View All Articles
+              <FiArrowRight className="transition-transform group-hover:translate-x-1" />
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-sky-500 to-sky-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </motion.button>
-        </AnimatedSection>
+        </motion.div>
       </div>
     </section>
   );

@@ -5,8 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './home/Home';
 import Footer from './components/Footer';
-import AboutPage from './components/pages/AboutPage';
-import Contact from './components/pages/Contact';
+import AboutPage from './pages/AboutPage';
+import Contact from './pages/Contact';
 
 
 

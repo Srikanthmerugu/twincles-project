@@ -6,6 +6,7 @@ import HeroPage from "../components/HeroPage"
 import HeroSection from "../components/HeroPageTwo"
 import Services from "../components/Services"
 import Testimonials from "../components/Testimonials"
+import Solutions from "../components/Solutions"
 
 
 const Home = () => {
@@ -16,6 +17,8 @@ const Home = () => {
                          <Services />
             </ParallaxProvider>
             <HeroSection />
+                        <Solutions />
+
             <Testimonials />
             <Features />
             <Blog />
