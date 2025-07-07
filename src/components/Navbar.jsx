@@ -2,18 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiPhone } from 'react-icons/fi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
   const navigate = useNavigate();
 
-  const handleNaginate = () => {
+  const handleNavigate = () => {
     navigate('/contact');
-    // setMobileMenuOpen(false);
-
+    setMobileMenuOpen(false);
   }
   
   useEffect(() => {
@@ -30,11 +28,11 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "#services" },
-    { name: "Solutions", href: "#solutions" },
-    { name: "Blog", href: "#blog" },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Solutions", path: "/solutions" },
+    { name: "Blog", path: "/blog" },
   ];
 
   return (
@@ -50,33 +48,36 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center"
           >
-            <div className={`${scrolled ? "w-32" : "w-36"} transition-all duration-500`}>
+            <Link to="/" className={`${scrolled ? "w-20 md:w-32" : "w-27 md:w-36"} transition-all duration-500`}>
               <img 
                 src="https://twincles.com/wp-content/uploads/2025/01/cropped-cropped-Untitled-design-33-300x100.png" 
                 alt="Twincles Logo"
                 className="w-full h-auto rounded-xs"
               />
-            </div>
+            </Link>
           </motion.div>
           
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-2">
             {navItems.map((item, index) => (
-              <motion.a
+              <motion.div
                 key={item.name}
-                href={item.href}
-                className={`font-medium px-4 py-2 rounded-lg transition-all ${
-                  scrolled 
-                    ? "text-sky-900 hover:bg-sky-50" 
-                    : "text-white hover:bg-white/10"
-                }`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
                 whileHover={{ y: -2 }}
               >
-                {item.name}
-              </motion.a>
+                <Link
+                  to={item.path}
+                  className={`font-medium px-4 py-2 rounded-lg transition-all ${
+                    scrolled 
+                      ? "text-sky-900 hover:bg-sky-50" 
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
             ))}
             
             <motion.div 
@@ -106,7 +107,7 @@ const Navbar = () => {
                 }`}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
-                onClick={handleNaginate}
+                onClick={handleNavigate}
               >
                 Contact Us
               </motion.button>
@@ -141,14 +142,14 @@ const Navbar = () => {
             <div className="container mx-auto px-4 py-6">
               <div className="flex flex-col space-y-4">
                 {navItems.map((item) => (
-                  <a 
+                  <Link
                     key={item.name}
-                    href={item.href}
+                    to={item.path}
                     className="font-medium text-sky-900 hover:text-sky-600 px-4 py-3 rounded-lg hover:bg-sky-50 transition"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
                 
                 <div className="pt-4 border-t mt-4">
@@ -162,7 +163,10 @@ const Navbar = () => {
                     <span className="font-medium">+91 9391911699</span>
                   </a>
                   
-                  <button className="w-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white px-4 py-3.5 rounded-lg font-medium hover:shadow-md transition">
+                  <button 
+                    className="w-full bg-gradient-to-r from-sky-500 to-indigo-600 text-white px-4 py-3.5 rounded-lg font-medium hover:shadow-md transition"
+                    onClick={handleNavigate}
+                  >
                     Contact Us
                   </button>
                 </div>

@@ -47,9 +47,9 @@ const Blog = () => {
                 className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition"
                 whileHover={{ y: -10 }}
               >
-                                    <img src={post.img} alt={post.title} className="w-full h-full object-cover" />
+                                    {/* <img src={post.img} alt={post.title} className="w-full h-full object-cover" /> */}
 
-                {/* <div className="h-48 bg-gradient-to-r from-sky-500 to-sky-700 relative overflow-hidden">
+                <div className="h-48 bg-gradient-to-r from-sky-500 to-sky-700 relative overflow-hidden">
                   <motion.div 
                     className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"
                     initial={{ opacity: 0 }}
@@ -61,7 +61,7 @@ const Blog = () => {
                       </span>
                     </div>
                   </motion.div>
-                </div> */}
+                </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold my-3">{post.title}</h3>
                   <p className="text-sky-700 mb-4">{post.excerpt}</p>
