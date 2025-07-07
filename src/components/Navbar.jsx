@@ -2,10 +2,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiPhone } from 'react-icons/fi';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const navigate = useNavigate();
+
+  const handleNaginate = () => {
+    navigate('/contact');
+    // setMobileMenuOpen(false);
+
+  }
   
   useEffect(() => {
     const handleScroll = () => {
@@ -21,8 +30,8 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     { name: "Services", href: "#services" },
     { name: "Solutions", href: "#solutions" },
     { name: "Blog", href: "#blog" },
@@ -97,6 +106,7 @@ const Navbar = () => {
                 }`}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={handleNaginate}
               >
                 Contact Us
               </motion.button>

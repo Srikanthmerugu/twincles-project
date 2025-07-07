@@ -12,8 +12,9 @@ const Home = () => {
     return (
         <div>
             <HeroPage />
-            <ParallaxProvider>            <Services />
-</ParallaxProvider>
+            <ParallaxProvider>   
+                         <Services />
+            </ParallaxProvider>
             <HeroSection />
             <Testimonials />
             <Features />

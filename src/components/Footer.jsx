@@ -1,116 +1,248 @@
 // src/components/Footer.jsx
 import React from 'react';
-import { FiMail, FiPhone, FiFacebook, FiLinkedin, FiTwitter, FiYoutube, FiInstagram } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { FiPhone, FiMail, FiMapPin, FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
 
 const Footer = () => {
-  const socialLinks = [
-    { name: "Facebook", icon: <FiFacebook size={20} /> },
-    { name: "LinkedIn", icon: <FiLinkedin size={20} /> },
-    { name: "Twitter", icon: <FiTwitter size={20} /> },
-    { name: "YouTube", icon: <FiYoutube size={20} /> },
-    { name: "Instagram", icon: <FiInstagram size={20} /> },
+  const navItems = [
+    { name: "Home", href: "#" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Solutions", href: "#solutions" },
+    { name: "Blog", href: "#blog" },
+  ];
+
+  const services = [
+    "Web Development",
+    "Mobile Apps",
+    "UI/UX Design",
+    "Cloud Solutions",
+    "AI & ML",
+    "Digital Marketing"
   ];
 
   return (
-    <footer className="bg-sky-950 text-sky-200 pt-16 pb-8">
-      <div className="container mx-auto px-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div>
-            <div className="flex items-center mb-6">
-              <div><img src='https://twincles.com/wp-content/uploads/2025/01/cropped-cropped-Untitled-design-33-300x100.png' className='rounded-xl' width="250px" alt="Twincles Logo" /></div>
-            </div>
-            <p className="mb-6">
-              The best telecommunication solutions provider in Hyderabad, offering cutting-edge messaging and API solutions.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.name}
-                  href="#"
-                  className="text-sky-400 hover:text-white transition"
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                  aria-label={social.name}
-                >
-                  <div className="bg-sky-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-sky-700 transition">
-                    {social.icon}
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-bold text-white mb-6">Services</h3>
-            <ul className="space-y-3">
-              {["Bulk SMS", "2 Way Messaging", "Smart Links", "Voice Broadcast", "WhatsApp Business API", "MMS Messaging"].map((service) => (
-                <motion.li 
-                  key={service}
-                  whileHover={{ x: 5 }}
-                >
-                  <a href="#" className="hover:text-white transition block">{service}</a>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-bold text-white mb-6">Company</h3>
-            <ul className="space-y-3">
-              {["About Us", "Solutions", "Blog", "Careers", "Contact Us"].map((item) => (
-                <motion.li 
-                  key={item}
-                  whileHover={{ x: 5 }}
-                >
-                  <a href="#" className="hover:text-white transition block">{item}</a>
-                </motion.li>
-              ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h3 className="text-lg font-bold text-white mb-6">Contact</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <FiMail className="mt-1 mr-3 text-sky-400 flex-shrink-0" />
-                <span>letstalk@twincles.com</span>
-              </li>
-              <li className="flex items-start">
-                <FiPhone className="mt-1 mr-3 text-sky-400 flex-shrink-0" />
-                <span>+91 9391911699</span>
-              </li>
-              <li className="flex items-start">
-                <svg className="mt-1 mr-3 text-sky-400 flex-shrink-0" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-                </svg>
-                <span>
-                  221, 2nd floor, Manjeera Majestic Commercial,<br />
-                  JNTU Rd, Kukatpally,<br />
-                  Hyderabad, Telangana 500072
-                </span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        <div className="border-t border-sky-800 pt-8 mt-8 text-center text-sm">
-          <p>© {new Date().getFullYear()} Twincles Tele Solutions Pvt. Ltd. All rights reserved.</p>
-          <div className="mt-4 flex flex-wrap justify-center gap-6">
-            {["Privacy Policy", "Terms & Conditions", "DLT Registration", "API Documentation"].map((item) => (
-              <motion.a 
-                key={item}
-                href="#"
-                className="hover:text-white transition"
-                whileHover={{ y: -2 }}
+    <>
+      {/* CTA Section */}
+      {/* <div className="bg-gradient-to-r from-sky-600 to-indigo-700 py-16 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Ready to transform your business?
+              </h2>
+              <p className="text-sky-100 text-lg max-w-xl">
+                Let's build something amazing together. Our team of experts is ready to help you achieve your digital goals.
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="flex flex-col sm:flex-row gap-4 justify-end"
+            >
+              <a 
+                href="tel:+919391911699"
+                className="bg-white text-sky-700 hover:bg-sky-50 font-medium px-6 py-3 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg hover:shadow-xl"
               >
-                {item}
-              </motion.a>
-            ))}
+                <FiPhone className="text-sky-600" />
+                <span>Call Us Now</span>
+              </a>
+              <button className="bg-amber-500 hover:bg-amber-600 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-lg hover:shadow-xl">
+                Request a Quote
+              </button>
+            </motion.div>
           </div>
         </div>
-      </div>
-    </footer>
+      </div> */}
+
+      {/* Footer */}
+      <footer className="bg-gradient-to-b from-slate-900 to-slate-800 text-white pt-16 pb-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            {/* Company Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-40 mb-6">
+                <img 
+                  src="https://twincles.com/wp-content/uploads/2025/01/cropped-cropped-Untitled-design-33-300x100.png" 
+                  alt="Twincles Logo"
+                  className="w-full h-auto"
+                />
+              </div>
+              <p className="text-slate-300 mb-6">
+                Transforming ideas into digital reality. We create innovative solutions that drive growth and exceed expectations.
+              </p>
+              <div className="flex gap-4">
+                {[FiFacebook, FiTwitter, FiInstagram, FiLinkedin].map((Icon, index) => (
+                  <motion.a
+                    key={index}
+                    href="#"
+                    className="bg-slate-700 hover:bg-sky-600 p-3 rounded-full transition-colors"
+                    whileHover={{ y: -3 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Icon className="text-white" size={18} />
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Quick Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-slate-700">Quick Links</h3>
+              <ul className="space-y-3">
+                {navItems.map((item, index) => (
+                  <motion.li
+                    key={item.name}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 * index }}
+                    viewport={{ once: true }}
+                  >
+                    <a 
+                      href={item.href} 
+                      className="text-slate-300 hover:text-sky-400 transition-colors flex items-center gap-2"
+                    >
+                      <span className="bg-sky-900 w-1.5 h-1.5 rounded-full"></span>
+                      {item.name}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Services */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-slate-700">Our Services</h3>
+              <ul className="space-y-3">
+                {services.map((service, index) => (
+                  <motion.li
+                    key={service}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: 0.1 * index }}
+                    viewport={{ once: true }}
+                  >
+                    <a 
+                      href="#" 
+                      className="text-slate-300 hover:text-sky-400 transition-colors flex items-center gap-2"
+                    >
+                      <span className="bg-sky-900 w-1.5 h-1.5 rounded-full"></span>
+                      {service}
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-lg font-semibold mb-6 pb-2 border-b border-slate-700">Contact Us</h3>
+              <ul className="space-y-4">
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-3"
+                >
+                  <div className="bg-sky-900 p-2 rounded-lg mt-1">
+                    <FiPhone className="text-sky-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Phone</p>
+                    <a href="tel:+919391911699" className="text-slate-300 hover:text-sky-400 transition-colors">
+                      +91 9391911699
+                    </a>
+                  </div>
+                </motion.li>
+                
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-3"
+                >
+                  <div className="bg-sky-900 p-2 rounded-lg mt-1">
+                    <FiMail className="text-sky-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Email</p>
+                    <a href="mailto:info@twincles.com" className="text-slate-300 hover:text-sky-400 transition-colors">
+                      info@twincles.com
+                    </a>
+                  </div>
+                </motion.li>
+                
+                
+                <motion.li
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-3"
+                >
+                  <div className="bg-sky-900 p-2 rounded-lg mt-1">
+                    <FiMapPin className="text-sky-400" />
+                  </div>
+                  <div>
+                    <p className="font-medium">Address</p>
+                    <p className="text-slate-300">
+                      Tech Park, Sector 62, Noida, <br /> Uttar Pradesh, India
+                    </p>
+                  </div>
+                </motion.li>
+              </ul>
+            </motion.div>
+          </div>
+
+          {/* Copyright */}
+          <motion.div 
+            className="border-t border-slate-800 mt-12 pt-8 text-center text-slate-400"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <p>© {new Date().getFullYear()} Twincles Technologies. All rights reserved.</p>
+            <div className="flex flex-wrap justify-center gap-4 mt-4 text-sm">
+              <a href="#" className="hover:text-sky-400 transition-colors">Privacy Policy</a>
+              <a href="#" className="hover:text-sky-400 transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-sky-400 transition-colors">Cookie Policy</a>
+              <a href="#" className="hover:text-sky-400 transition-colors">Sitemap</a>
+            </div>
+          </motion.div>
+        </div>
+      </footer>
+    </>
   );
 };
 
