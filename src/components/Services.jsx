@@ -12,6 +12,7 @@ import {
   FiGlobe,
   FiPhoneCall
 } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
   const sectionRef = useRef(null);
@@ -26,6 +27,19 @@ const Services = () => {
 //     speed: 10,
 //     targetElement: sectionRef.current
 //   });
+
+
+// Mapping service titles to their paths
+  const servicePaths = {
+    "Bulk SMS": "/bulk-sms",
+    "2 Way Messaging": "/two-wa-sms",
+    "Smart Links": "/smart-links",
+    "Voice Broadcast": "/voice-broadcasting",
+    "WhatsApp Business API": "/whatsApp-business",
+    "MMS Messaging": "/mms-messaging",
+    "Verified Caller ID": "/truecaller-business",
+    "Contact Center": "/contact-center-solutions"
+  };
 
   const services = [
     {
@@ -204,16 +218,17 @@ const Services = () => {
                     </ul>
                   </div>
                   
-                  <motion.button
-                    whileHover={{ 
-                      scale: 1.05,
-                      backgroundColor: service.color.split(" ")[0].replace("from-", "")
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`w-full py-3 px-4 bg-gradient-to-r ${service.color} text-white font-medium rounded-lg transition-all shadow-md`}
+                  <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    to={servicePaths[service.title]}
+                    className={`block w-full py-3 px-4 bg-gradient-to-r ${service.color} text-white font-medium rounded-lg transition-all shadow-md text-center`}
                   >
                     Learn More
-                  </motion.button>
+                  </Link>
+                </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -236,6 +251,7 @@ const Services = () => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <motion.button
+            onClick={() => window.location.href = '/'}
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
               className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl"
@@ -243,6 +259,7 @@ const Services = () => {
               Get Started
             </motion.button>
             <motion.button
+            onClick={() => window.location.href = '/contact'}
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
               className="bg-white text-sky-700 border-2 border-sky-500 px-8 py-3 rounded-xl font-medium hover:bg-sky-50"

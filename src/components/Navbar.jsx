@@ -1,19 +1,21 @@
 // src/components/Navbar.jsx
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiMenu, FiX, FiPhone } from 'react-icons/fi';
+import { FiMenu, FiX, FiPhone, FiChevronDown, FiChevronRight, FiChevronUp } from 'react-icons/fi';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeSubDropdown, setActiveSubDropdown] = useState(null);
   const navigate = useNavigate();
 
   const handleNavigate = () => {
     navigate('/contact');
     setMobileMenuOpen(false);
   }
-  
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -27,12 +29,49 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleDropdown = (dropdown) => {
+    setActiveDropdown(dropdown === activeDropdown ? null : dropdown);
+    setActiveSubDropdown(null);
+  };
+
+  const toggleSubDropdown = (subDropdown) => {
+    setActiveSubDropdown(subDropdown === activeSubDropdown ? null : subDropdown);
+  };
+
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Solutions", path: "/solutions" },
-    { name: "Blog", path: "/blog" },
+    { 
+      name: "Products", 
+      path: null,
+      dropdown: [
+        { 
+          name: "SMS", 
+          subItems: [
+            { name: "Bulk Messaging", path: "/bulk-sms" },
+            { name: "2 Way Messaging", path: "/two-wa-sms" },
+            { name: "Smart Links", path: "/smart-links" }
+          ]
+        },
+        { name: "Voice", path: "/voice-broadcasting" },
+        { name: "WhatsApp for Business", path: "/whatsApp-business" },
+        { name: "Email Service", path: "/otp-services" },
+        { name: "MMS Messaging", path: "/mms-messaging" },
+        { name: "Contact Center", path: "/contact-center-solutions" },
+        { name: "True Caller API", path: "/truecaller-business" }
+      ]
+    },
+    { 
+      name: "Solutions", 
+      path: null,
+      dropdown: [
+        { name: "API Documentation", path: "/api-documentation" },
+        { name: "What is DLT Registration", path: "/dlt-registration" },
+        { name: "Use Cases SMS & WhatsApp Users", path: "/use-cases" },
+        { name: "Our Customers", path: "/our-customers" }
+      ]
+    },
+    { name: "Blog", path: "/all-blogs" },
   ];
 
   return (
@@ -65,18 +104,133 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
+                className="relative"
+                onHoverStart={() => item.path === null && setActiveDropdown(item.name)}
+                onHoverEnd={() => item.path === null && setActiveDropdown(null)}
               >
-                <Link
-                  to={item.path}
-                  className={`font-medium px-4 py-2 rounded-lg transition-all ${
-                    scrolled 
-                      ? "text-sky-900 hover:bg-sky-50" 
-                      : "text-white hover:bg-white/10"
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                {item.path ? (
+                  <Link
+                    to={item.path}
+                    className={`font-medium px-4 py-2 rounded-lg transition-all relative group ${
+                      scrolled 
+                        ? "text-sky-900 hover:bg-sky-50" 
+                        : "text-white hover:bg-white/10"
+                    }`}
+                  >
+                    {item.name}
+                    <motion.span 
+                      className="absolute bottom-0 left-1/2 h-0.5 bg-amber-500"
+                      initial={{ width: 0, x: "-50%" }}
+                      whileHover={{ width: "80%", transition: { duration: 0.3 } }}
+                    />
+                  </Link>
+                ) : (
+                  <div className="relative">
+                    <button
+                      onClick={() => toggleDropdown(item.name)}
+                      className={`font-medium px-4 py-2 rounded-lg transition-all flex items-center gap-1 relative group ${
+                        scrolled 
+                          ? "text-sky-900 hover:bg-sky-50" 
+                          : "text-white hover:bg-white/10"
+                      }`}
+                    >
+                      {item.name}
+                      <FiChevronDown className={`transition-transform ${
+                        activeDropdown === item.name ? "transform rotate-180" : ""
+                      }`} />
+                      <motion.span 
+                        className="absolute bottom-0 left-1/2 h-0.5 bg-amber-500"
+                        initial={{ width: 0, x: "-50%" }}
+                        animate={{ 
+                          width: activeDropdown === item.name ? "80%" : "0%",
+                          x: "-50%",
+                          transition: { duration: 0.3 }
+                        }}
+                      />
+                    </button>
+
+                    <AnimatePresence>
+                      {activeDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className={`absolute left-0 mt-2 w-64 rounded-lg shadow-lg py-2 ${
+                            scrolled ? "bg-white" : "bg-white"
+                          }`}
+                          onHoverStart={() => setActiveDropdown(item.name)}
+                          onHoverEnd={() => setActiveDropdown(null)}
+                        >
+                          {item.dropdown.map((dropdownItem, idx) => (
+                            <React.Fragment key={dropdownItem.name}>
+                              {dropdownItem.subItems ? (
+                                <div className="relative">
+                                  <button
+                                    onClick={() => toggleSubDropdown(dropdownItem.name)}
+                                    className="w-full text-left px-4 py-2 hover:bg-sky-50 flex items-center justify-between group"
+                                  >
+                                    <span className="text-sky-900">{dropdownItem.name}</span>
+                                    <FiChevronRight className="text-sky-500" />
+                                    <motion.span 
+                                      className="absolute bottom-0 left-0 h-0.5 bg-amber-400"
+                                      initial={{ width: 0 }}
+                                      whileHover={{ width: "100%", transition: { duration: 0.3 } }}
+                                    />
+                                  </button> 
+                                  
+                                  <AnimatePresence>
+                                    {activeSubDropdown === dropdownItem.name && (
+                                      <motion.div
+                                        initial={{ opacity: 0, x: 10 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        exit={{ opacity: 0, x: 10 }}
+                                        transition={{ duration: 0.2 }}
+                                        className="absolute left-full top-0 ml-1 w-64 bg-white  rounded-lg shadow-lg py-2 z-10"
+                                      >
+                                        {dropdownItem.subItems.map((subItem) => (
+                                          <Link
+                                            key={subItem.name}
+                                            to={subItem.path}
+                                            className="block px-4 py-2 text-sm text-blue-800 hover:bg-sky-50 group relative"
+                                            onClick={() => {
+                                              setActiveDropdown(null);
+                                              setActiveSubDropdown(null);
+                                            }}
+                                          >
+                                            {subItem.name}
+                                            <motion.span 
+                                              className="absolute bottom-0 left-0 h-0.5 bg-amber-400"
+                                              initial={{ width: 0 }}
+                                              whileHover={{ width: "100%", transition: { duration: 0.3 } }}
+                                            />
+                                          </Link>
+                                        ))}
+                                      </motion.div>
+                                    )}
+                                  </AnimatePresence>
+                                </div>
+                              ) : (
+                                <Link
+                                  to={dropdownItem.path}
+                                  className="block px-4 py-2 text-blue-800 hover:bg-sky-50 relative group"
+                                  onClick={() => setActiveDropdown(null)}
+                                >
+                                  {dropdownItem.name}
+                                  <motion.span 
+                                    className="absolute bottom-0 left-0 h-0.5 bg-amber-400"
+                                    initial={{ width: 0 }}
+                                    whileHover={{ width: "100%", transition: { duration: 0.3 } }}
+                                  />
+                                </Link>
+                              )}
+                            </React.Fragment>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
               </motion.div>
             ))}
             
@@ -142,14 +296,110 @@ const Navbar = () => {
             <div className="container mx-auto px-4 py-6">
               <div className="flex flex-col space-y-4">
                 {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    className="font-medium text-sky-900 hover:text-sky-600 px-4 py-3 rounded-lg hover:bg-sky-50 transition"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
+                  <div key={item.name}>
+                    {item.path ? (
+                      <Link
+                        to={item.path}
+                        className="font-medium text-sky-900 hover:text-sky-600 px-4 py-3 rounded-lg hover:bg-sky-50 transition flex items-center"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.name}
+                        <motion.span 
+                          className="ml-auto h-0.5 w-4 bg-amber-500"
+                          initial={{ scaleX: 0 }}
+                          whileHover={{ scaleX: 1, originX: 0 }}
+                        />
+                      </Link>
+                    ) : (
+                      <div className="flex flex-col">
+                        <button
+                          onClick={() => toggleDropdown(item.name)}
+                          className="font-medium text-sky-900 hover:text-sky-600 px-4 py-3 rounded-lg hover:bg-sky-50 transition flex items-center justify-between"
+                        >
+                          {item.name}
+                          {activeDropdown === item.name ? <FiChevronUp /> : <FiChevronDown />}
+                        </button>
+                        
+                        <AnimatePresence>
+                          {activeDropdown === item.name && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: "auto" }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="pl-6 overflow-hidden"
+                            >
+                              {item.dropdown.map((dropdownItem) => (
+                                <div key={dropdownItem.name} className="flex flex-col">
+                                  {dropdownItem.subItems ? (
+                                    <>
+                                      <button
+                                        onClick={() => toggleSubDropdown(dropdownItem.name)}
+                                        className="text-left px-4 py-2 text-sky-800 hover:bg-sky-50 flex items-center justify-between"
+                                      >
+                                        {dropdownItem.name}
+                                        <FiChevronRight className={`text-sky-500 transition-transform ${
+                                          activeSubDropdown === dropdownItem.name ? "transform rotate-90" : ""
+                                        }`} />
+                                      </button>
+                                      
+                                      <AnimatePresence>
+                                        {activeSubDropdown === dropdownItem.name && (
+                                          <motion.div
+                                            initial={{ opacity: 0, height: 0 }}
+                                            animate={{ opacity: 1, height: "auto" }}
+                                            exit={{ opacity: 0, height: 0 }}
+                                            transition={{ duration: 0.2 }}
+                                            className="pl-4"
+                                          >
+                                            {dropdownItem.subItems.map((subItem) => (
+                                              <Link
+                                                key={subItem.name}
+                                                to={subItem.path}
+                                                className="block px-4 py-2 text-sm text-sky-700 hover:bg-sky-50 transition flex items-center"
+                                                onClick={() => {
+                                                  setMobileMenuOpen(false);
+                                                  setActiveDropdown(null);
+                                                  setActiveSubDropdown(null);
+                                                }}
+                                              >
+                                                {subItem.name}
+                                                <motion.span 
+                                                  className="ml-auto h-0.5 w-3 bg-amber-400"
+                                                  initial={{ scaleX: 0 }}
+                                                  whileHover={{ scaleX: 1, originX: 0 }}
+                                                />
+                                              </Link>
+                                            ))}
+                                          </motion.div>
+                                        )}
+                                      </AnimatePresence>
+                                    </>
+                                  ) : (
+                                    <Link
+                                      to={dropdownItem.path}
+                                      className="block px-4 py-2 text-sky-800 hover:bg-sky-50 transition flex items-center"
+                                      onClick={() => {
+                                        setMobileMenuOpen(false);
+                                        setActiveDropdown(null);
+                                      }}
+                                    >
+                                      {dropdownItem.name}
+                                      <motion.span 
+                                        className="ml-auto h-0.5 w-3 bg-amber-400"
+                                        initial={{ scaleX: 0 }}
+                                        whileHover={{ scaleX: 1, originX: 0 }}
+                                      />
+                                    </Link>
+                                  )}
+                                </div>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )}
+                  </div>
                 ))}
                 
                 <div className="pt-4 border-t mt-4">

@@ -77,6 +77,8 @@ const HeroPage = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               <motion.button
+                                          onClick={() => window.location.href = '/contact'}
+
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl text-sm sm:text-base"

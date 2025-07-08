@@ -179,6 +179,8 @@ const Solutions = () => {
                 >
                   <p className="text-sm text-white/80 mb-3">Ready to get started?</p>
                   <motion.button
+                                              onClick={() => window.location.href = '/contact'}
+
                     whileHover={{ backgroundColor: "rgba(255,255,255,0.9)" }}
                     whileTap={{ scale: 0.98 }}
                     className="w-full bg-white text-sky-600 font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
