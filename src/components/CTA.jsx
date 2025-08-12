@@ -20,7 +20,7 @@ const CTA = () => {
         <AnimatedSection delay={0.3}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button 
-                                        onClick={() => window.location.href = '/contact'}
+             onClick={() => window.location.href = '/contact'}
 
               className="bg-white text-sky-600 px-8 py-3 rounded-full font-semibold hover:bg-sky-50 transition"
               whileHover={{ scale: 1.05 }}

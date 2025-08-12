@@ -88,7 +88,7 @@ const UseCasesPage = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <motion.button
-                onClick={() => window.location.href = '/contact'}
+              onClick={() => window.location.href = '/contact'}
               whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.2)" }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-blue-700 hover:bg-blue-50 font-semibold px-8 py-3 rounded-lg shadow-lg transition-all"
@@ -361,7 +361,7 @@ const UseCasesPage = () => {
             viewport={{ once: true }}
           >
             <motion.button
-                            onClick={() => window.location.href = '/contact'}
+              onClick={() => window.location.href = '/contact'}
 
               whileHover={{ scale: 1.05, boxShadow: "0px 8px 24px rgba(0, 0, 0, 0.2)" }}
               whileTap={{ scale: 0.95 }}

@@ -5,8 +5,25 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+      },
+      
+    },
+  },
   plugins: [react(),
-        tailwindcss(),
-
+    tailwindcss(),
+    // require('@tailwindcss/typography'),
   ],
+   optimizeDeps: {
+    include: ['jwt-decode'],
+  },
+  server: {
+    host: '0.0.0.0', 
+    port: 5175,
+  },
+  base: '/',
+
 })

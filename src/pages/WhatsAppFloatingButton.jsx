@@ -8,8 +8,25 @@ const WhatsAppFloatingButton = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    services: ''
   });
+
+   const services = [
+    "Bulk SMS",
+    "2 Way Messaging",
+    "Smart Links",
+    "WhatsApp Business API",
+    "Voice Broadcast",
+    "Email/OTP Services",
+    "MMS Messaging",
+    "True Caller API",
+    "Contact Center Setup",
+    "API Documentation",
+    "DLT Registration",
+    "Use Cases",
+    "Other"
+  ];
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,15 +36,16 @@ const WhatsAppFloatingButton = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const whatsappNumber = '9391911699';
-    const text = `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`;
-    const encodedText = encodeURIComponent(text);
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, '_blank');
-    setIsOpen(false);
-    setFormData({ name: '', email: '', message: '' });
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const whatsappNumber = '9391911699';
+  const text = `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}\nService Interested: ${formData.service}`;
+  const encodedText = encodeURIComponent(text);
+  window.open(`https://wa.me/${whatsappNumber}?text=${encodedText}`, '_blank');
+  setIsOpen(false);
+  setFormData({ name: '', email: '', message: '', service: '' }); // Reset form
+};
+
 
 // Close popup when clicking outside
 React.useEffect(() => {
@@ -118,6 +136,21 @@ return (
                                     required
                                 />
                             </div>
+                             <div>
+                    <label className="block text-slate-700 font-medium mb-2">Service Interested In</label>
+                    <select
+                      name="service"
+                      value={formData.service}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent shadow-sm"
+                    >
+                      <option value="">Select a service</option>
+                      {services.map((service, index) => (
+                        <option key={index} value={service}>{service}</option>
+                      ))}
+                    </select>
+                  </div>
 
                             <div className="bg-white p-2 rounded-lg border border-gray-200">
                                 <textarea

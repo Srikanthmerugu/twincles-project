@@ -51,12 +51,15 @@ const AboutPage = () => {
   };
 
   const services = [
-    { icon: <FiSend size={24} />, name: "Bulk SMS", desc: "Mass messaging with high delivery rates" },
-    { icon: <FiPhone size={24} />, name: "Voice Broadcasting", desc: "Automated voice messages to thousands" },
-    { icon: <FiMessageSquare size={24} />, name: "Video Conferencing", desc: "HD quality virtual meetings" },
-    { icon: <FiMail size={24} />, name: "Email Services", desc: "Transactional and bulk email solutions" },
-    { icon: <FiImage size={24} />, name: "MMS Messaging", desc: "Rich media content delivery" },
-    { icon: <FiUsers size={24} />, name: "Contact Center", desc: "Customer support solutions" }
+    { icon: <FiSend size={24} />, name: "Bulk SMS", desc: "Send instant OTPs, bulk campaigns, and automated reminders with our integrated APIs and web interface" },
+    { icon: <FiPhone size={24} />, name: "WhatsApp Business API", desc: "Give your business a modern look with our WhatsApp Business API solutions." },
+    { icon: <FiMessageSquare size={24} />, name: "RCS Messaging", desc: "Engage customers with rich media messages including images, videos, and interactive buttons." },
+    { icon: <FiMail size={24} />, name: "Voice Broadcast", desc: "Promote your brand efficiently through authentic voice calls and outbound dialers." },
+    { icon: <FiImage size={24} />, name: "Two-Way Messaging Platform", desc: "Generate leads and collect feedback using dedicated long/short code messaging solutions. "},
+    { icon: <FiUsers size={24} />, name: "Smart Links", desc: "Share important information seamlessly through integrated APIs for structured communication." },
+    { icon: <FiUsers size={24} />, name: "Contact Center", desc: "Cloud-based contact center with IVR technology for personalized customer experiences" },
+    { icon: <FiUsers size={24} />, name: "Audio and Video Conferencing", desc: "High-quality audio and video conferencing solutions for seamless business communication" }
+
   ];
 
   const whyChooseUs = [

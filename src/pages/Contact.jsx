@@ -13,25 +13,32 @@ const Contact = () => {
   
   const services = [
     "Bulk SMS",
+    "2 Way Messaging",
+    "Smart Links",
     "WhatsApp Business API",
     "Voice Broadcast",
     "Email/OTP Services",
+    "MMS Messaging",
+    "True Caller API",
     "Contact Center Setup",
+    "API Documentation",
+    "DLT Registration",
+    "Use Cases",
     "Other"
   ];
-  
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+
+
+
+  const sendToWhatsApp = () => {
+    const { name, email, phone, message, service } = formData;
+    const text = `New Contact Form Submission:\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nMessage: ${message}`;
+    const url = `https://api.whatsapp.com/send?phone=919391911699&text=${encodeURIComponent(text)}`;
+    window.location.href = url;
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    alert('Thank you for your message! We will contact you soon.');
+    sendToWhatsApp();
     setFormData({
       name: '',
       email: '',
@@ -39,6 +46,14 @@ const Contact = () => {
       message: '',
       service: ''
     });
+  };
+  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   return (
@@ -103,7 +118,7 @@ const Contact = () => {
                     <h4 className="font-bold mb-1 text-white">Our Location</h4>
                     <p className="text-indigo-200">
                       221, 2nd floor, Manjeera Majestic Commercial, JNTU Rd, <br />
-                      Kukatpally Housing Board Colony, Kukatpally, <br />
+                      KPHB Colony, Kukatpally, <br />
                       Hyderabad, Telangana 500072
                     </p>
                   </div>
@@ -277,7 +292,7 @@ const Contact = () => {
             >
               <div className="h-80 w-full">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d60883.44410562475!2d78.396433!3d17.497235!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb918dab342375%3A0x180a04af0c47f594!2sManjeera%20Trinity%20Corporate!5e0!3m2!1sen!2sus!4v1751974510040!5m2!1sen!2sus" 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3573.954380080765!2d78.39186199666857!3d17.491099687802773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb918eb6921b7d%3A0x81590ec7359ee666!2sManjeera%20Majestic%20Commercial!5e0!3m2!1sen!2sin!4v1752064523000!5m2!1sen!2sin" 
                   width="100%" 
                   height="100%" 
                   style={{ border: 0 }}

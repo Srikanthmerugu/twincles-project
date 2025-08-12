@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX, FiPhone, FiChevronDown, FiChevronRight, FiChevronUp } from 'react-icons/fi';
 import { useNavigate, Link } from 'react-router-dom';
+import twinclesLogo  from '../assets/logo-twincles.png';
+
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,6 +15,10 @@ const Navbar = () => {
 
   const handleNavigate = () => {
     navigate('/contact');
+    setMobileMenuOpen(false);
+  }
+  const handleNavigate2 = () => {
+    navigate('/login');
     setMobileMenuOpen(false);
   }
 
@@ -53,12 +59,12 @@ const Navbar = () => {
             { name: "Smart Links", path: "/smart-links" }
           ]
         },
-        { name: "Voice", path: "/voice-broadcasting" },
         { name: "WhatsApp for Business", path: "/whatsApp-business" },
+        { name: "RCS Messaging", path: "/rcs-messaging" },
+        { name: "Voice", path: "/voice-broadcasting" },
         { name: "Email Service", path: "/otp-services" },
-        { name: "MMS Messaging", path: "/mms-messaging" },
         { name: "Contact Center", path: "/contact-center-solutions" },
-        { name: "True Caller API", path: "/truecaller-business" }
+        { name: "Audio and Video Conferencing", path: "/audio-video-solutions" }
       ]
     },
     { 
@@ -71,6 +77,7 @@ const Navbar = () => {
         { name: "Our Customers", path: "/our-customers" }
       ]
     },
+    // { name: "Blog", path: "/all-blogs" },
     { name: "Blog", path: "/all-blogs" },
   ];
 
@@ -89,7 +96,7 @@ const Navbar = () => {
           >
             <Link to="/" className={`${scrolled ? "w-20 md:w-32" : "w-27 md:w-36"} transition-all duration-500`}>
               <img 
-                src="https://twincles.com/wp-content/uploads/2025/01/cropped-cropped-Untitled-design-33-300x100.png" 
+              src={twinclesLogo}
                 alt="Twincles Logo"
                 className="w-full h-auto rounded-xs"
               />
@@ -244,12 +251,12 @@ const Navbar = () => {
                 href="tel:+919391911699"
                 className={`flex items-center gap-2 font-medium px-4 py-2 rounded-lg transition-all ${
                   scrolled 
-                    ? "text-amber-600 bg-amber-50 hover:bg-amber-100" 
-                    : "text-white bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/30"
+                    ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white hover:shadow-lg" 
+                    : "bg-gradient-to-r from-amber-500 to-orange-500 text-white hover:shadow-lg"
                 }`}
                 whileHover={{ scale: 1.05 }}
               >
-                <FiPhone className="text-amber-500" />
+                <FiPhone className="text-white" />
                 <span>+91 9391911699</span>
               </motion.a>
               
@@ -264,6 +271,18 @@ const Navbar = () => {
                 onClick={handleNavigate}
               >
                 Contact Us
+              </motion.button>
+              <motion.button 
+                className={`px-5 py-2.5 rounded-lg font-medium transition-all ${
+                  scrolled 
+                    ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white hover:shadow-lg" 
+                    : "bg-gradient-to-r from-orange-500 to-amber-500 text-white hover:shadow-lg"
+                }`}
+                whileHover={{ y: -2 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={handleNavigate2}
+              >
+                Login
               </motion.button>
             </motion.div>
           </nav>

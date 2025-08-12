@@ -14,6 +14,12 @@ import img7 from '../../assets/companies/img7.png'
 import img9 from '../../assets/companies/img9.png'
 import img10 from '../../assets/companies/img10.png'
 import img11 from '../../assets/companies/img11.jpg'
+import img12 from '../../assets/companies/img12.png'
+import img13 from '../../assets/companies/img13.png'
+import img14 from '../../assets/companies/img14.png'
+import img15 from '../../assets/companies/img15.png'
+import img16 from '../../assets/companies/img16.png'
+import img17 from '../../assets/companies/img17.png'
 
 const OurCustomersSection = () => {
   const sliderRef = useRef(null);
@@ -28,9 +34,15 @@ const OurCustomersSection = () => {
     { id: 6, name: 'image', logo: img6, color: 'bg-gradient-to-r from-cyan-500 to-teal-600' },
     { id: 7, name: 'image', logo: img7, color: 'bg-gradient-to-r from-lime-500 to-green-600' },
     { id: 8, name: 'image', logo: img8, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
-    { id: 8, name: 'image', logo: img9, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
-    { id: 8, name: 'image', logo: img10, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
-    { id: 8, name: 'image', logo: img11, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 9, name: 'image', logo: img9, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 10, name: 'image', logo: img10, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 11, name: 'image', logo: img11, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 12, name: 'image', logo: img12, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 13, name: 'image', logo: img13, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 14, name: 'image', logo: img14, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 15, name: 'image', logo: img15, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 16, name: 'image', logo: img16, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
+    { id: 17, name: 'image', logo: img17, color: 'bg-gradient-to-r from-rose-500 to-red-600' },
   ];
 
   const settings = {

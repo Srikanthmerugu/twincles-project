@@ -1,6 +1,7 @@
 // src/components/WhatsAppBusinessPage.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
+import whatsapAPI from '../../assets/companies/whatsapAPI.jpg';
 import { FiArrowRight, FiCheck, FiMessageSquare, FiLock, FiGlobe, FiHeadphones, FiCreditCard, FiUser, FiSettings, FiDatabase, FiBarChart2 } from 'react-icons/fi';
 
 const WhatsAppBusinessPage = () => {
@@ -106,10 +107,10 @@ const WhatsAppBusinessPage = () => {
                   whileTap={{ scale: 0.95 }}
                   className="bg-white text-green-700 hover:bg-green-50 font-semibold px-8 py-3 rounded-lg shadow-lg transition-all"
                 >
-                  Get Started
+                  Get Started 
                 </motion.button>
                 <motion.a
-                                            onClick={() => window.location.href = '/contact'}
+                onClick={() => window.location.href = '/contact'}
 
                   href="#demo"
                   className="bg-green-800/50 hover:bg-green-800 font-semibold px-8 py-3 rounded-lg shadow-lg flex items-center gap-2 transition-all"
@@ -133,10 +134,12 @@ const WhatsAppBusinessPage = () => {
                   <div className="relative mb-8">
                     <div className="absolute -top-6 -left-6 w-16 h-16 bg-emerald-500 rounded-full opacity-50"></div>
                     <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-green-500 rounded-full opacity-50"></div>
-                    <div className="relative z-10 bg-white p-6 rounded-xl shadow-lg text-center">
-                      <div className="text-5xl mb-4">💬</div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">WhatsApp Business API</h3>
-                      <p className="text-gray-600">Enterprise-grade messaging solutions</p>
+                    <div className="relative z-10 bg-white p-3  rounded-xl shadow-lg text-center">
+                      <div className="text-5xl ">
+                        <img src={whatsapAPI} alt="WhatsApp Business API" className="w-full h-36 rounded-2xl mx-auto" />
+                      </div>
+                      {/* <h3 className="text-xl font-bold text-gray-800 mb-2">WhatsApp Business API</h3> */}
+                      <p className="font-bold text-gray-800 mt-2">WhatsApp Business API</p>
                     </div>
                   </div>
                   
@@ -416,6 +419,7 @@ const WhatsAppBusinessPage = () => {
             viewport={{ once: true }}
           >
             <motion.button
+            onClick={() => window.location.href = '/contact'}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-white text-green-700 hover:bg-green-50 font-semibold px-8 py-3 rounded-lg shadow-lg transition-all"

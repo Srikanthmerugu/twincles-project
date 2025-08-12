@@ -1,7 +1,7 @@
 // src/components/Services.jsx
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-// import { useParallax } from 'react-scroll-parallax';
+import image from '../assets/RCS.png'; // Example image import, adjust path as necessary
 import { 
   FiMessageSquare, 
   FiSmartphone, 
@@ -13,32 +13,21 @@ import {
   FiPhoneCall
 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { AiFillProduct } from 'react-icons/ai';
 
 const Services = () => {
   const sectionRef = useRef(null);
-  
-  // Parallax elements
-//   const parallaxLeft = useParallax({
-//     speed: -10,
-//     targetElement: sectionRef.parallaxLeft 
-//   });
-  
-//   const parallaxRight = useParallax({
-//     speed: 10,
-//     targetElement: sectionRef.current
-//   });
 
-
-// Mapping service titles to their paths
+  // Mapping service titles to their paths
   const servicePaths = {
     "Bulk SMS": "/bulk-sms",
-    "2 Way Messaging": "/two-wa-sms",
-    "Smart Links": "/smart-links",
-    "Voice Broadcast": "/voice-broadcasting",
     "WhatsApp Business API": "/whatsApp-business",
-    "MMS Messaging": "/mms-messaging",
-    "Verified Caller ID": "/truecaller-business",
-    "Contact Center": "/contact-center-solutions"
+    "RCS Messaging": "/rcs-messaging",
+    "Voice Broadcast": "/voice-broadcasting",
+    "Two-Way Messaging Platform": "/two-way-messaging",
+    "Smart Links": "/smart-links",
+    "Contact Center": "/contact-center-solutions",
+    "Audio and Video Conferencing": "/audio-video-solutions"
   };
 
   const services = [
@@ -52,20 +41,36 @@ const Services = () => {
     },
     {
       id: 2,
-      title: "2 Way Messaging",
-      icon: <FiSmartphone className="text-4xl text-white" />,
-      description: "Generate leads and collect feedback using dedicated long/short code messaging solutions.",
-      features: ["Lead Generation", "Feedback Collection", "Dedicated Codes", "Real-time Interaction"],
-      color: "from-amber-500 to-orange-500"
+      title: "WhatsApp Business API",
+      icon: <FiUsers className="text-4xl text-white" />,
+      description: "Give your business a modern look with our WhatsApp Business API solutions.",
+      features: ["Business Messaging", "Rich Media Support", "API Integration", "Customer Engagement"],
+      color: "from-green-600 to-green-600"
     },
+//     {
+//   id: 3,
+//   title: "RCS Messaging",
+//   icon: (
+//     <div className="w-16 h-16 flex items-center justify-center">
+//       <img 
+//         src={image} 
+//         alt="RCS Messaging" 
+//         className="w-full h-full object-contain"
+//       />
+//     </div>
+//   ),
+//   description: "Engage customers with rich media messages including images, videos, and interactive buttons.",
+//   features: ["Rich Media", "Interactive Buttons", "Read Receipts", "Branded Experience"],
+//   color: "from-blue-300 to-blue-300"
+// },
     {
-      id: 3,
-      title: "Smart Links",
-      icon: <FiCheckCircle className="text-4xl text-white" />,
-      description: "Share important information seamlessly through integrated APIs for structured communication.",
-      features: ["Information Sharing", "API Integration", "Structured Communication", "Tracking"],
-      color: "from-emerald-500 to-teal-500"
-    },
+  id: 3,
+  title: "RCS Messaging",
+  icon: <AiFillProduct  className="text-4xl text-white" />,
+  description: "Engage customers with rich media messages including images, videos, and interactive buttons.",
+  features: ["Rich Media", "Branded Sender ID", "Interactive Buttons", "Real-Time Analytics"],
+  color: "from-blue-800 to-blue-600"
+},
     {
       id: 4,
       title: "Voice Broadcast",
@@ -76,35 +81,35 @@ const Services = () => {
     },
     {
       id: 5,
-      title: "WhatsApp Business API",
-      icon: <FiUsers className="text-4xl text-white" />,
-      description: "Give your business a modern look with our WhatsApp Business API solutions.",
-      features: ["Business Messaging", "Rich Media Support", "API Integration", "Customer Engagement"],
-      color: "from-green-500 to-lime-500"
+      title: "Two-Way Messaging Platform",
+      icon: <FiSmartphone className="text-4xl text-white" />,
+      description: "Generate leads and collect feedback using dedicated long/short code messaging solutions.",
+      features: ["Lead Generation", "Feedback Collection", "Dedicated Codes", "Real-time Interaction"],
+      color: "from-amber-500 to-orange-500"
     },
     {
       id: 6,
-      title: "MMS Messaging",
-      icon: <FiVideo className="text-4xl text-white" />,
-      description: "Engage customers with multimedia messages including images, videos, and GIFs.",
-      features: ["Rich Media", "Image Support", "Video Messages", "GIF Support"],
-      color: "from-rose-500 to-pink-600"
+      title: "Smart Links",
+      icon: <FiCheckCircle className="text-4xl text-white" />,
+      description: "Share important information seamlessly through integrated APIs for structured communication.",
+      features: ["Information Sharing", "API Integration", "Structured Communication", "Tracking"],
+      color: "from-emerald-500 to-teal-500"
     },
     {
       id: 7,
-      title: "Verified Caller ID",
-      icon: <FiGlobe className="text-4xl text-white" />,
-      description: "Build trust with Truecaller verified business ID to improve call answer rates.",
-      features: ["Brand Trust", "Identity Verification", "Increased Answer Rates", "Scam Protection"],
-      color: "from-blue-500 to-cyan-500"
-    },
-    {
-      id: 8,
       title: "Contact Center",
       icon: <FiPhoneCall className="text-4xl text-white" />,
       description: "Cloud-based contact center with IVR technology for personalized customer experiences.",
       features: ["Cloud-Based", "IVR Technology", "Remote Management", "Call Routing"],
       color: "from-indigo-500 to-violet-600"
+    },
+    {
+      id: 8,
+      title: "Audio and Video Conferencing",
+      icon: <FiGlobe className="text-4xl text-white" />,
+      description: "High-quality audio and video conferencing solutions for seamless business communication.",
+      features: ["HD Quality", "Clear Audio", "Screen Sharing", "Secure & Encrypted"],
+      color: "from-blue-500 to-cyan-500"
     }
   ];
 
@@ -118,7 +123,6 @@ const Services = () => {
       <div className="absolute inset-0">
         {/* Floating circles */}
         <motion.div
-        //   ref={parallaxLeft.ref}
           className="absolute top-1/4 left-10 w-96 h-96 rounded-full bg-sky-200/20 blur-3xl"
           animate={{
             scale: [1, 1.2, 1],
@@ -131,7 +135,6 @@ const Services = () => {
         />
         
         <motion.div
-        //   ref={parallaxRight.ref}
           className="absolute bottom-1/4 right-10 w-80 h-80 rounded-full bg-amber-200/20 blur-3xl"
           animate={{
             scale: [1, 1.3, 1],
@@ -201,8 +204,8 @@ const Services = () => {
                 </div>
                 
                 {/* Card Content */}
-                <div className="p-6">
-                  <p className="text-sky-700 mb-4">{service.description}</p>
+                <div className="p-6" >
+                  <p className="text-sky-700 h-22 mb-4">{service.description}</p>
                   
                   <div className="mb-6">
                     <h4 className="font-semibold text-sky-900 mb-2">Key Features:</h4>
@@ -219,16 +222,16 @@ const Services = () => {
                   </div>
                   
                   <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Link
-                    to={servicePaths[service.title]}
-                    className={`block w-full py-3 px-4 bg-gradient-to-r ${service.color} text-white font-medium rounded-lg transition-all shadow-md text-center`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    Learn More
-                  </Link>
-                </motion.div>
+                    <Link
+                      to={servicePaths[service.title]}
+                      className={`block w-full py-3 px-4 bg-gradient-to-r ${service.color} text-white font-medium rounded-lg transition-all shadow-md text-center`}
+                    >
+                      Learn More
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
@@ -251,7 +254,7 @@ const Services = () => {
           </p>
           <div className="mt-8 flex justify-center gap-4">
             <motion.button
-            onClick={() => window.location.href = '/'}
+              onClick={() => window.location.href = '/contact'}
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
               className="bg-gradient-to-r from-amber-500 to-orange-500 text-white px-8 py-3 rounded-xl font-medium shadow-lg hover:shadow-xl"
@@ -259,7 +262,7 @@ const Services = () => {
               Get Started
             </motion.button>
             <motion.button
-            onClick={() => window.location.href = '/contact'}
+              onClick={() => window.location.href = '/contact'}
               whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
               className="bg-white text-sky-700 border-2 border-sky-500 px-8 py-3 rounded-xl font-medium hover:bg-sky-50"
@@ -270,9 +273,7 @@ const Services = () => {
         </motion.div>
       </div>
     </section>
-    
   );
 };
-
 
 export default Services;

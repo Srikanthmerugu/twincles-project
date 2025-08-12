@@ -2,31 +2,33 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FiPhone, FiMail, FiMapPin, FiFacebook, FiTwitter, FiInstagram, FiLinkedin, FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import twinclesLogo  from '../assets/logo-twincles.png';
+
 
 const Footer = () => {
   const navItems = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { 
-      name: "Products", 
-      items: [
-        { name: "SMS Solutions", path: "/sms" },
-        { name: "Voice API", path: "/voice" },
-        { name: "WhatsApp Business", path: "/whatsapp" },
-        { name: "Email Services", path: "/email" }
-      ]
-    },
-    { name: "Resources", path: "/resources" },
+    // { 
+    //   name: "Products", 
+    //   items: [
+    //     { name: "SMS Solutions", path: "/sms" },
+    //     { name: "Voice API", path: "/voice" },
+    //     { name: "WhatsApp Business", path: "/whatsapp" },
+    //     { name: "Email Services", path: "/email" }
+    //   ] 
+    // },
+    { name: "Blogs", path: "/all-blogs" },
     { name: "Contact", path: "/contact" },
   ];
 
   const services = [
     { name: "Bulk SMS", path: "/bulk-sms" },
-    { name: "Transactional SMS", path: "/transactional-sms" },
-    { name: "OTP Services", path: "/otp" },
-    { name: "Voice Broadcast", path: "/voice-broadcast" },
-    { name: "WhatsApp API", path: "/whatsapp-api" },
-    { name: "Email Marketing", path: "/email-marketing" },
+    // { name: "Transactional SMS", path: "/transactional-sms" },
+    { name: "OTP Services", path: "/otp-services" },
+    { name: "Audio & Video- Solutions", path: "/audio-video-solutions" },
+    { name: "WhatsApp API", path: "/whatsApp-business" },
+    { name: "RCS Messaging", path: "/rcs-messaging" },
   ];
 
   return (
@@ -77,7 +79,8 @@ const Footer = () => {
           >
             <div className="w-40">
               <img 
-                src="https://twincles.com/wp-content/uploads/2025/01/cropped-cropped-Untitled-design-33-300x100.png" 
+                // src="https://twincles.com/wp-content/uploads/2025/01/cropped-cropped-Untitled-design-33-300x100.png" 
+                src={twinclesLogo}
                 alt="Twincles Logo"
                 className="w-full h-auto"
               />
@@ -217,9 +220,9 @@ const Footer = () => {
               <div>
                 <p className="text-white font-medium">Address</p>
                 <p className="text-blue-200 text-sm">
-                  221, 2nd floor, Manjeera Majestic Commercial,<br />
-                  JNTU Rd, Kukatpally,<br />
-                  Hyderabad, Telangana 500072
+                  221, 2nd floor, Manjeera Majestic Commercial,
+                  JNTU Rd,  KPHB Colony  Kukatpally,
+                  Hyderabad - 500072
                 </p>
               </div>
             </motion.div>
@@ -270,18 +273,24 @@ const Footer = () => {
           <p className="text-blue-200 text-sm">
             © {new Date().getFullYear()} Twincles Technologies. All rights reserved.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 mt-2 text-xs">
-            {['Privacy Policy', 'Terms of Service', 'Cookie Policy', 'GDPR'].map((item, index) => (
-              <motion.a
-                key={index}
-                href="#"
-                className="text-blue-200 hover:text-amber-400 transition-colors"
-                whileHover={{ y: -2 }}
-              >
-                {item}
-              </motion.a>
-            ))}
-          </div>
+         <div className="flex flex-wrap justify-center gap-4 mt-2 text-xs">
+  {[
+    { label: 'Privacy Policy', path: '/privacy-policy' },
+    { label: 'Terms & Conditions', path: '/terms&conditions' }
+  ].map((item, index) => (
+    <motion.div
+      key={index}
+      whileHover={{ y: -2 }}
+    >
+      <Link
+        to={item.path}
+        className="text-blue-200 hover:text-amber-400 transition-colors"
+      >
+        {item.label}
+      </Link>
+    </motion.div>
+  ))}
+</div>
         </motion.div>
       </div>
     </footer>

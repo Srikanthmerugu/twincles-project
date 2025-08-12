@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import heroimage from '../assets/hero.png'
+import heroimage from '../assets/image_(2)[1].png'
 import { FiArrowRight, FiSend, FiPhone, FiMessageSquare, FiMail, FiImage, FiShield } from 'react-icons/fi';
+import RightSideImg from './RightSideImg';
 
 const HeroPage = () => {
   const services = [
@@ -60,12 +61,16 @@ const HeroPage = () => {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-3xl text-center md:text-start mt-8 md:mt-1 sm:text-4xl md:text-5xl lg:text-[3.2rem] xl:text-[2.5rem] font-bold text-white leading-tight">
-                The Best  <span className="text-amber-300">Tele Communication</span> solutions in Hyderabad
+                The Best  <span className="text-amber-400">Tele Communication</span> solutions in Hyderabad
 
               </h1>
               
 <div className="h-1 w-16 mx-auto md:mx-0 bg-amber-400 my-6"></div>              
+             
               <p className="text-lg text-center md:text-start sm:text-xl text-blue-100 mb-6 md:mb-8">
+                The Best Tele Communication Solutions in Hyderabad
+The Best WhatsApp business API provider</p>
+ <p className="text-lg text-center md:text-start sm:text-xl text-blue-100 mb-6 md:mb-8">
                 Enterprise-grade messaging solutions with 99.9% delivery rates and unmatched reliability
               </p>
             </motion.div>
@@ -77,7 +82,7 @@ const HeroPage = () => {
               transition={{ delay: 0.3, duration: 0.8 }}
             >
               <motion.button
-                                          onClick={() => window.location.href = '/contact'}
+               onClick={() => window.location.href = '/contact'}
 
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.98 }}
@@ -95,13 +100,13 @@ const HeroPage = () => {
             </motion.div>
 
             {/* Trust indicators */}
-            <motion.div
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-8 md:mt-12"
+            {/* <motion.div
+              className="flex flex-row md:items-start items-center mx-auto gap-4 sm:gap-6 mt-8 md:mt-12"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6, duration: 0.8 }}
             >
-              <div className="flex -space-x-3">
+              <div className="flex  -space-x-3">
                 {[1, 2, 3].map((item) => (
                   <div key={item} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-white bg-blue-600"></div>
                 ))}
@@ -117,7 +122,7 @@ const HeroPage = () => {
                   <span className="ml-1 text-xs sm:text-sm">4.9/5 (200+ reviews)</span>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* Services grid - right side */}
@@ -158,7 +163,7 @@ const HeroPage = () => {
                 </p>
                 <p className="text-xs text-center mt-1 text-blue-200">- Fortune 500 Client</p>
               </div> */}
-              <img src={heroimage} />
+             <RightSideImg />
             </motion.div>
           </div>
         </div>

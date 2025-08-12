@@ -141,13 +141,13 @@ const Solutions = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:w-1/2 w-full"
+            className="lg:w-1/2   w-full"
           >
-            <div className="relative">
+            <div className="relative md:mt-35">
               {/* Main Card */}
               <motion.div 
                 whileHover={{ y: -5 }}
-                className="bg-gradient-to-br from-sky-600 to-indigo-700 rounded-2xl p-8 text-white shadow-xl relative overflow-hidden"
+                className="bg-gradient-to-br  from-sky-600 to-indigo-700 rounded-2xl p-8 text-white shadow-xl relative overflow-hidden"
               >
                 {/* Floating elements */}
                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-white/10 rounded-full"></div>
@@ -179,7 +179,7 @@ const Solutions = () => {
                 >
                   <p className="text-sm text-white/80 mb-3">Ready to get started?</p>
                   <motion.button
-                                              onClick={() => window.location.href = '/contact'}
+                   onClick={() => window.location.href = '/contact'}
 
                     whileHover={{ backgroundColor: "rgba(255,255,255,0.9)" }}
                     whileTap={{ scale: 0.98 }}

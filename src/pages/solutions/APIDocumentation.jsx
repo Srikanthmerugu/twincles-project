@@ -517,7 +517,7 @@ const APIDocumentationPage = () => {
               
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
-                  <div className="bg-blue-600 text-white p-2 rounded-full">
+                  <div className="bg-blue-600 text-white p-2  rounded-full">
                     1
                   </div>
                   <div>

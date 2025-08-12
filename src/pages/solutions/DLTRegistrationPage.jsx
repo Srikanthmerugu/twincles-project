@@ -318,7 +318,9 @@ const DLTRegistrationPage = () => {
                       </div>
                     </div>
                     
-                    <div className="mt-8 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-lg p-4 text-center font-medium">
+                    <div 
+                    onClick={() => window.location.href = '/contact'}
+                    className="mt-8 bg-gradient-to-r from-blue-600 to-indigo-700 text-white rounded-lg p-4 text-center font-medium">
                       Get Started Today
                     </div>
                   </div>
@@ -673,7 +675,7 @@ const DLTRegistrationPage = () => {
               whileTap={{ scale: 0.95 }}
               className="bg-white text-blue-700 hover:bg-blue-50 font-semibold px-8 py-3 rounded-lg shadow-lg transition-all"
             //   onClick={() => setIsFormVisible(true)}
-                                        onClick={() => window.location.href = '/contact'}
+            onClick={() => window.location.href = '/contact'}
 
             >
               Get Started Now

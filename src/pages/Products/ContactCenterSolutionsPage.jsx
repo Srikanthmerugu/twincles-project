@@ -520,7 +520,7 @@ const ContactCenterSolutionsPage = () => {
             viewport={{ once: true }}
           >
             <motion.button
-                                        onClick={() => window.location.href = '/contact'}
+             onClick={() => window.location.href = '/contact'}
 
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

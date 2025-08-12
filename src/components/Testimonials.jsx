@@ -84,7 +84,7 @@ const Testimonials = () => {
         </div>
 
         {/* Trust indicators at bottom */}
-        <motion.div
+        {/* <motion.div
           className="flex flex-col items-center mt-16"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -99,7 +99,7 @@ const Testimonials = () => {
             ))}
           </div>
           <p className="text-blue-200 text-sm">Trusted by leading brands across industries</p>
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
